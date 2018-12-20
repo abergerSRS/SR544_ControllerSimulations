@@ -1,1 +1,7 @@
 *.autosave
+*.pdf
+*.aux
+*.asv
+*.log
+*.out
+*.synctex.gz
