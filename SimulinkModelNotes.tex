@@ -180,4 +180,9 @@ The motor block provides speed and angle outputs for use with the closed loop fe
 
 Zero-Order Holds are used for the motor speed and phase to represent the digital sampling of these quantities by the MCU.
 
+\section{Closed Loop PID model}
+\begin{equation}
+\frac{K_T K_d s^2 + K_T K_p s + K_T K_i } {J s^3 + K_D s^2 + K_T K_d s^2 + K_T K_p s + K_T K_i}
+\end{equation}
+
 \end{document}
