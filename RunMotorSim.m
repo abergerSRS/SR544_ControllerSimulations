@@ -2,7 +2,7 @@ close all
 clear all
 
 J = 1.66e-5;
-%KD = 1.95e-9;
+%KD = 1.95e-9; %not sure where this number came from
 KD = 1.33e-8;
 KT = 7.5e-3;
 pow = 1.88;
@@ -29,15 +29,18 @@ plot(tout,phase_error_revs,'r','LineWidth',2)
 legend('speed error (Hz)','phase error (revs)')
 xlabel('time (s)')
 ylabel('error')
-xlim([3 12])
+xlim([0 12])
 ylim([-1 1])
 
 figure
 plot(tout,total_PID_out,'g','LineWidth',2)
-legend('total PID output')
+hold
+plot(tout,speed_PID_out,'b','LineWidth',2)
+plot(tout,phase_PID_out,'r','LineWidth',2)
+legend('total PID output','speed PID output','phase PID output')
 xlabel('time (s)')
 ylabel('output')
-xlim([3 12])
+xlim([0 12])
 ylim([-0.1 0.5])
 
 
