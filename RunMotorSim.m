@@ -7,11 +7,16 @@ KD = 1.33e-8;
 KT = 7.5e-3;
 pow = 1.88;
 
-k_p = [0.01:0.01:0.1];
+k_p = 0.1;
+k_i = 0.01;
+N = 10:10:100;
 
-for i = 1:length(k_p)
-    set_param('DC_motor_with_PID/Speed PID','P',num2str(k_p(i)))
-    
+set_param('DC_motor_with_PID/Speed PID','P',num2str(k_p))
+set_param('DC_motor_with_PID/Speed PID','I',num2str(k_i))
+
+for i = 1:length(N)
+    filter = ones(1,N(i))/N(i);
+    set_param('DC_motor_with_PID/150-pt moving average','Coefficients',strcat('[',num2str(filter),']'))
     simOut = sim('DC_motor_with_PID',...
                 'SaveOutput','on','OutputSaveName','yout');
 
@@ -37,8 +42,8 @@ for i = 1:length(k_p)
     plot(tout,motor_speed,'b','LineWidth',2)
     if i == 1
         legend('ref (Hz)','motor (Hz)')
-        xlabel('freq (Hz)')
-        ylabel('error')
+        xlabel('time (s)')
+        ylabel('freq (Hz)')
     end
     % xlim([0 12])
     % ylim([-1 1])
