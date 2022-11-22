@@ -7,9 +7,9 @@ KD = 1.33e-8;
 KT = 7.5e-3;
 pow = 1.88;
 
-k_p = 0.1;
+k_p = 0.02;
 k_i = 0.01;
-N = 10:10:100;
+N = 75;
 
 set_param('DC_motor_with_PID/Speed PID','P',num2str(k_p))
 set_param('DC_motor_with_PID/Speed PID','I',num2str(k_i))
@@ -47,17 +47,17 @@ for i = 1:length(N)
     end
     % xlim([0 12])
     % ylim([-1 1])
-% 
-%     figure
-%     % plot(tout,total_PID_out,'g','LineWidth',2)
-%     % hold
-%     plot(tout,speed_PID_out,'b','LineWidth',2)
-%     % plot(tout,phase_PID_out,'r','LineWidth',2)
-%     legend('total PID output','speed PID output','phase PID output')
-%     xlabel('time (s)')
-%     ylabel('output')
-%     % xlim([0 12])
-%     % ylim([-0.1 0.5])
+
+    figure
+    % plot(tout,total_PID_out,'g','LineWidth',2)
+    % hold
+    plot(tout,speed_PID_out,'b','LineWidth',2)
+    % plot(tout,phase_PID_out,'r','LineWidth',2)
+    legend('total PID output','speed PID output','phase PID output')
+    xlabel('time (s)')
+    ylabel('output')
+    % xlim([0 12])
+    % ylim([-0.1 0.5])
 end
 
 
